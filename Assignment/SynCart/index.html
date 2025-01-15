@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SynCart</title>
+    <link rel="stylesheet" href="./CSS/main.css">
+</head>
+<body>
+    <div id="box">
+        <div class="sign">
+            <h1 onclick="signInBtn()" id="signInButton">Sign In</h1>
+            <h1 onclick="signUpBtn()" id="signUpButton">Sign Up</h1>
+        </div>
+        <div id="signUp">
+            <form action="" onsubmit="userSignUp(event)">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="city" placeholder="City" required>
+            <input type="text" id="phone" placeholder="Phone Number" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="submit" value="Submit" class="sub">
+            </form>
+        </div>
+        <div id="signIn">
+            <form action="" onsubmit="userSignIn(event)">
+            <input type="email" id="email-signIn" placeholder="Email">
+            <input type="password" id="password-signIn" placeholder="Password">
+            <input type="submit" value="Submit" class="sub">
+        </form>
+        </div>
+    </div>
+    <div id="menu">
+        <ol>
+            <li onclick="home()">Home</li>
+            <li onclick="showproducts()">Products</li>
+            <li onclick="purchase()">Purchase</li>
+            <li onclick="orderHistory()">Order History</li>
+            <li onclick="recharge()">Wallet Recharge</li>
+            <li onclick="logout()">Log Out</li>
+        </ol>
+    </div>
+    <div id="homePage">
+        <h1 id="welcome"></h1>
+    </div>
+    <div id="productPage">
+        <span id="productAddButton"><button onclick="addProduct()" id="addproduct">Add Product</button> </span>
+        <table id="productTable">
+           <tr>
+                <th>Product Id</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Shipping Duration</th>
+                <th>Action</th>
+           </tr>
+        </table>
+    </div>
+    <div id="purchasePage">
+        <table id="purchaseTable">
+            <tr>
+                <th>Product Id</th>
+                 <th>Product Name</th>
+                 <th>Price</th>
+                 <th>Stock</th>
+                 <th>Shipping Duration</th>
+            </tr>
+         </table>
+    </div>
+    <div id="emptyOrderHistory" style="text-align: center;"><h1>No Order History</h1></div>
+    <div id="orderHistoryPage">
+        <table id="orderTable">
+            <tr>
+                 <th>Order ID</th>
+                 <th>Product ID</th>
+                 <th>Total Price</th>
+                 <th>Purchase Date</th>
+                 <th>Quantity</th>
+                 <th>Orderstatus</th>
+                 <th>Action</th>
+            </tr>
+         </table>
+    </div>
+    <div id="addEditProductForm">
+        <h1>Add / Edit Product Details</h1>
+        <input type="text" id="productName" placeholder="Product Name">
+        <input type="text" id="productStock" placeholder="Product Stock Count">
+        <input type="text" id="productPrice" placeholder="Product Price">
+        <input type="number" id="shippingDuration" step="0.5" placeholder="Shipping Duration">
+        <button onclick="addEditProduct()">submit</button>
+    </div>
+    <div id="rechargePage">
+        <h1 id="currentBalance"></h1>
+        <span id="amountInput"><input type="number" placeholder="Enter the Amount " id="amount" required>
+        <button onclick="rechargeAmount()" id="deposit">Deposit</button></span>
+    </div>
+</body>
+<script src="./TypeScript/main.js"></script>
+</html>
