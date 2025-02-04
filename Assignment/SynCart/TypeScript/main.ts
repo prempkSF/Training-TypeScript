@@ -132,10 +132,10 @@ async function userSignUp(event) {
     })
 
     if (userExists) {
-        alert("User with Same Email ID. Already Exists.")
+        alert("Customer with Same Email ID. Already Exists.");
     }
     else {
-        let customer: Customer = new Customer(name.value, city.value, email.value, 0, password.value, phone.value);
+        let customer: Customer = new Customer(name.value, city.value, phone.value, 0, email.value, password.value);
         CustomersArrayList.push(customer);
         alert(`Sign Up Successful Your Customer ID is ${customer.CustomerId}`);
         name.value = "";
@@ -155,7 +155,7 @@ async function userSignIn(event) {
     CustomersArrayList.forEach(user => {
         if (user.EmailId.toLowerCase() == email.value.toLowerCase() && user.Password == password.value) {
             userExists = true;
-            console.log(loggedCustomer);
+            loggedCustomer = user;
             var box = document.getElementById("box") as HTMLDivElement;
             //Hide Login Box
             box.style.display = "none";
@@ -298,11 +298,12 @@ async function buy(productID: string) {
         let countValue = prompt("Please enter your name:", "0");
         var count: number = Number(countValue);
         if (product.Stock > count) {
-            if (loggedCustomer.WalletBalance >= product.Price * count) {
+            //Total Price --> Product Price + Delivery Price Rs.50
+            if (loggedCustomer.WalletBalance >= ((product.Price * count) + 50)) {
 
                 product.Stock -= Number(count);
                 loggedCustomer.WalletBalance -= product.Price * count;
-                OrdersArrayList.push(new Order(loggedCustomer.CustomerId, product.ProductId, count * product.Price, new Date(), count, OrderStatus.Ordered));
+                OrdersArrayList.push(new Order(loggedCustomer.CustomerId, product.ProductId, ((count * product.Price)+50), new Date(), count, OrderStatus.Ordered));
                 alert(`You have successfully purchased ${product.ProductName}. Order ID is ${OrdersArrayList[OrdersArrayList.length - 1].OrderId}`);
                 orderHistory();
             }

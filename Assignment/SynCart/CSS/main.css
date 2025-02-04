@@ -4,7 +4,7 @@
 .sign{
     display: flex;
     justify-content: space-evenly;
-    background-color: aliceblue;
+    background-color: white;
 }
 .sign h1:nth-child(1){
     border-radius: 10px;

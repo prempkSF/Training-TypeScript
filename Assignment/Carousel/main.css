@@ -1,0 +1,74 @@
+/* CSS Styling for the Carousel */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.carousel {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%; /* Round container for the image */
+    border: 3px solid black; /* Blue border */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; /* Round image */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Buttons outside the carousel image */
+.carousel-button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    opacity: 0.7;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.prev-button {
+    left: -40px; /* Move to the left side outside the circular image */
+}
+
+.next-button {
+    right: -40px; /* Move to the right side outside the circular image */
+}
+
+.carousel-button:hover {
+    opacity: 1; /* On hover, increase opacity */
+}
+
+/* Optional: Adding some padding for the overall layout */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}

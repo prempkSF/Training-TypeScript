@@ -140,10 +140,10 @@ function userSignUp(event) {
                 }
             });
             if (userExists) {
-                alert("User with Same Email ID. Already Exists.");
+                alert("Customer with Same Email ID. Already Exists.");
             }
             else {
-                customer = new Customer(name.value, city.value, email.value, 0, password.value, phone.value);
+                customer = new Customer(name.value, city.value, phone.value, 0, email.value, password.value);
                 CustomersArrayList.push(customer);
                 alert("Sign Up Successful Your Customer ID is ".concat(customer.CustomerId));
                 name.value = "";
@@ -167,7 +167,7 @@ function userSignIn(event) {
             CustomersArrayList.forEach(function (user) {
                 if (user.EmailId.toLowerCase() == email.value.toLowerCase() && user.Password == password.value) {
                     userExists = true;
-                    console.log(loggedCustomer);
+                    loggedCustomer = user;
                     var box = document.getElementById("box");
                     //Hide Login Box
                     box.style.display = "none";
@@ -342,10 +342,11 @@ function buy(productID) {
                 countValue = prompt("Please enter your name:", "0");
                 count = Number(countValue);
                 if (product.Stock > count) {
-                    if (loggedCustomer.WalletBalance >= product.Price * count) {
+                    //Total Price --> Product Price + Delivery Price Rs.50
+                    if (loggedCustomer.WalletBalance >= ((product.Price * count) + 50)) {
                         product.Stock -= Number(count);
                         loggedCustomer.WalletBalance -= product.Price * count;
-                        OrdersArrayList.push(new Order(loggedCustomer.CustomerId, product.ProductId, count * product.Price, new Date(), count, OrderStatus.Ordered));
+                        OrdersArrayList.push(new Order(loggedCustomer.CustomerId, product.ProductId, ((count * product.Price) + 50), new Date(), count, OrderStatus.Ordered));
                         alert("You have successfully purchased ".concat(product.ProductName, ". Order ID is ").concat(OrdersArrayList[OrdersArrayList.length - 1].OrderId));
                         orderHistory();
                     }
